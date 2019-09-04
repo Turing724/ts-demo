@@ -1,24 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import { Provider } from 'mobx-react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import './assets/style/reset.less';
+import Header from './pages/Components/Header';
+import { routes } from './pages/router';
+import * as store from './store';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Provider {...store}>
+        <BrowserRouter>
+          <div>
+            <Header />
+            {routes.map(({ path, component, exact }) => {
+              return <Route path={path} exact={exact} component={component} key={path} />;
+            })}
+          </div>
+        </BrowserRouter>
+      </Provider>
     </div>
   );
 }
