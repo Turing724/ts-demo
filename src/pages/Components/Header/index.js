@@ -2,15 +2,16 @@ import React from 'react';
 // import reactDom from 'react-dom'
 // import {observable,action} from 'mobx'
 import { observer } from 'mobx-react';
-import './index.less';
 import { Link } from 'react-router-dom';
+import './index.less';
+import axios from 'axios';
 // import store from './store';
 @observer
 class Header extends React.Component {
   render() {
     return (
       <div id="HeaderContainer">
-        <nav className="navList">
+        <nav className="nav-container">
           <Link to="/">
             <svg width="64px" height="32px" viewBox="0 0 64 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
               <desc>Created with Sketch.</desc>{' '}
@@ -35,10 +36,27 @@ class Header extends React.Component {
               </g>
             </svg>
           </Link>
-          <ul></ul>
+          <ul className="navList">
+            <li>首页</li>
+            <li>分类</li>
+            <li>排行榜</li>
+            <li>APP下载</li>
+            <li>我要投稿</li>
+            <li>动漫</li>
+            <li>游戏中心</li>
+            <li>条漫大赛</li>
+          </ul>
         </nav>
       </div>
     );
+  }
+  componentWillMount() {
+    this.getData();
+  }
+  getData() {
+    axios.get('https://www.kuaikanmanhua.com/v2/pweb/daily/topics?pos=0').then(res => {
+      console.log(res);
+    });
   }
 }
 export default Header;

@@ -4,11 +4,22 @@
   min-width: 1184px;
   background: rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
-  .navList {
+  .nav-container {
     margin: 0 auto;
     width: 1184px;
     position: relative;
     padding: 16px 0;
-    height: 32px;
+    ul {
+      li {
+        .hot {
+          position: absolute;
+          top: 0px;
+          right: -1px;
+          width: 28px;
+          height: 13px;
+          background: url(https://static3w.kuaikanmanhua.com/static-kkfront-pc/image/hot.d413a7d.png) center center / cover no-repeat;
+        }
+      }
+    }
   }
 }
