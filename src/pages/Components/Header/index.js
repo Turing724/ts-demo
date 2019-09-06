@@ -50,12 +50,12 @@ class Header extends React.Component {
       </div>
     );
   }
-  componentWillMount() {
+  componentDidMount() {
     this.getData();
   }
   getData() {
-    axios.get('https://www.kuaikanmanhua.com/v2/pweb/daily/topics?pos=0').then(res => {
-      console.log(res);
+    axios.get('/v2/pweb/daily/topics?pos=0').then(res => {
+      console.log(res.data);
     });
   }
 }
