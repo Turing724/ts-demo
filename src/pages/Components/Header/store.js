@@ -1,13 +1,10 @@
 import { observable, action } from 'mobx';
 
 class Store {
-  @observable counter = 0;
-  @action doAdd = () => {
-    this.counter++;
-  };
-  @action do = () => {
-    this.counter--;
-  };
+  @observable currentIndex = 0;
+  @action changeTab(index) {
+    this.currentIndex = index;
+  }
 }
 
 export default new Store();

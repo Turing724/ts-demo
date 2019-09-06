@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'mobx-react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import './assets/style/reset.less';
+import './assets/style/layout.less';
 import 'antd/dist/antd.css';
 import Header from './pages/Components/Header';
 import { routes } from './pages/router';
