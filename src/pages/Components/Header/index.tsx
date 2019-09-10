@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import { observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import store from './store';
 import { Input, Icon } from 'antd';
-import './index.less';
+import styles from './index.less';
 
 @observer
 class Header extends React.Component {
@@ -58,12 +58,13 @@ class Header extends React.Component {
   render() {
     const { navList } = this.state;
     return (
-      <div id="HeaderContainer">
-        <nav className="nav-container clearfix">
+      <div id={styles.Header}>
+        <nav className={`${styles.navContainer} clearfix`}>
           <Link to="/">
-            <svg className="fl" width="64px" height="32px" viewBox="0 0 64 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+            <svg className="fl" width="64px" height="32px" viewBox="0 0 64 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+              {/* xlink="http://www.w3.org/1999/xlink" */}
               <desc>Created with Sketch.</desc>{' '}
-              <g id="快看Logo64x32" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+              <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Group-13" data-v-a2ebf0ec="">
                   <rect id="Rectangle" x="0" y="0" width="64" height="32"></rect>{' '}
                   <g id="水印" transform="translate(1.000000, 0.000000)" fill="#FFD806">
@@ -98,7 +99,7 @@ class Header extends React.Component {
               </g>
             </svg>
           </Link>
-          <ul className="navList fl">
+          <ul className={`${styles.navList} fl`}>
             {navList.map((item, i) => {
               return (
                 <li key={item.id} className={`${store.currentIndex === i ? 'active' : ''}`} onClick={() => store.changeTab(i)}>
@@ -111,7 +112,9 @@ class Header extends React.Component {
           <div className="searchContainer fl">
             <Input placeholder="搜索作品、作者名" suffix={<Icon type="search" style={{ color: 'rgba(0,0,0,.45)' }} />} />
           </div>
-          <div className="user fr">登录|注册</div>
+          <div className="user fr">
+            <span>登录</span>|<span>注册</span>
+          </div>
         </nav>
       </div>
     );
