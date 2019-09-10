@@ -5,10 +5,10 @@ import axios from 'axios';
 import store from './store';
 import { Input, Icon } from 'antd';
 import styles from './index.less';
-
+import {LoginProps,LoginState} from './Header.interface'
 @observer
-class Header extends React.Component {
-  constructor(props) {
+class Header extends React.PureComponent<LoginProps,LoginState> {
+  constructor(props:LoginProps) {
     super(props);
     this.state = {
       navList: [
@@ -62,7 +62,6 @@ class Header extends React.Component {
         <nav className={`${styles.navContainer} clearfix`}>
           <Link to="/">
             <svg className="fl" width="64px" height="32px" viewBox="0 0 64 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-              {/* xlink="http://www.w3.org/1999/xlink" */}
               <desc>Created with Sketch.</desc>{' '}
               <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Group-13" data-v-a2ebf0ec="">

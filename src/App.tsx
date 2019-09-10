@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Provider } from 'mobx-react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import './assets/style/reset.less';

@@ -4,8 +4,9 @@
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "commonjs",
-    "target": "es5",
-    "jsx": "react"
+    "target": "ES2015",
+    "jsx": "react",
+    "experimentalDecorators": true
   },
   "include": ["./src/**/*", "./typing/"]
 }
