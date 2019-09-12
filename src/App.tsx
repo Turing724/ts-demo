@@ -5,7 +5,7 @@ import './assets/style/reset.less';
 import './assets/style/layout.less';
 import 'antd/dist/antd.css';
 import Header from './pages/Components/Header';
-import { routes } from './pages/router';
+import { routes, RoutesItem } from './pages/router';
 import * as store from './store';
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <BrowserRouter>
           <div>
             <Header />
-            {routes.map(({ path, component, exact }) => {
+            {routes.map(({ path, component, exact }: RoutesItem) => {
               return <Route path={path} exact={exact} component={component} key={path} />;
             })}
           </div>

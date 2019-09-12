@@ -1,19 +1,18 @@
-// import Header from '../Components/Header';
+import Home from '../view/Home';
 
 export const routes: RoutesItem[] = [
   {
-    path: '/Header',
-    component: () => import('../Components/Header'),
+    path: '/',
+    component: Home,
     exact: true,
-    strict: false,
-    name: '首页'
+    strict: false
   }
 ];
 
 export interface RoutesItem {
-  path: String;
-  component: () => Promise<any>;
+  path: string;
+  component: any;
   exact: boolean;
-  name?: string;
+  // name?: string;
   strict: boolean;
 }

@@ -1,6 +1,6 @@
 declare module '*.less' {
-  const styles: { [className: string]: string };
-  export default styles;
+  const content: any;
+  export default content;
 }
 
 declare module 'reactRouterDom' {

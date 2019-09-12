@@ -2,13 +2,13 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import store from './store';
+import Store from './store';
 import { Input, Icon } from 'antd';
-import styles from './index.less';
-import {LoginProps,LoginState} from './Header.interface'
+import './index.less';
+import { LoginProps, LoginState } from './Header.interface';
 @observer
-class Header extends React.PureComponent<LoginProps,LoginState> {
-  constructor(props:LoginProps) {
+class Header extends React.PureComponent<LoginProps, LoginState> {
+  constructor(props: LoginProps) {
     super(props);
     this.state = {
       navList: [
@@ -58,8 +58,8 @@ class Header extends React.PureComponent<LoginProps,LoginState> {
   render() {
     const { navList } = this.state;
     return (
-      <div id={styles.Header}>
-        <nav className={`${styles.navContainer} clearfix`}>
+      <div id={`Header`}>
+        <nav className={`navContainer clearfix`}>
           <Link to="/">
             <svg className="fl" width="64px" height="32px" viewBox="0 0 64 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
               <desc>Created with Sketch.</desc>{' '}
@@ -98,10 +98,10 @@ class Header extends React.PureComponent<LoginProps,LoginState> {
               </g>
             </svg>
           </Link>
-          <ul className={`${styles.navList} fl`}>
+          <ul className={`navList fl`}>
             {navList.map((item, i) => {
               return (
-                <li key={item.id} className={`${store.currentIndex === i ? 'active' : ''}`} onClick={() => store.changeTab(i)}>
+                <li key={item.id} className={`${Store.currentIndex === i ? 'active' : ''}`} onClick={() => Store.changeTab(i)}>
                   {navList.length - 1 === i ? <img src="https://static3w.kuaikanmanhua.com/static-kkfront-pc/image/hot.d413a7d.png" alt="" /> : null}
                   {item.name}
                 </li>

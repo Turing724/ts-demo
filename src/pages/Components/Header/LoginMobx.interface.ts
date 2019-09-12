@@ -1,4 +1,4 @@
 export interface LoginMobxStore {
   currentIndex: number;
-  changeTab(index: number):void;
+  changeTab(index: number): void;
 }
