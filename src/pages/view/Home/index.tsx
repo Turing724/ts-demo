@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import { LoginProps, LoginState } from './Home.interface';
 import { Carousel } from 'antd';
+import Store from './store';
+import './index.less';
 @observer
 class Home extends React.PureComponent<LoginProps, LoginState> {
   constructor(props: LoginProps) {
@@ -12,24 +15,24 @@ class Home extends React.PureComponent<LoginProps, LoginState> {
   }
   render() {
     return (
-      <div id="Banner">
-        <Carousel autoplay>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-        </Carousel>
+      <div id="Home">
+        <div className="bannerList">
+          <Carousel autoplay>
+            {Store.bannerList &&
+              toJS(Store.bannerList).map(x => {
+                return (
+                  <div key={x['id']}>
+                    <img src={x['url']} alt="" className="img-item" />
+                  </div>
+                );
+              })}
+          </Carousel>
+        </div>
       </div>
     );
   }
+  componentDidMount() {
+    Store.getBannerList();
+  }
 }
-
 export default Home;

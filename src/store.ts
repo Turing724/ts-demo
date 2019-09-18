@@ -1,2 +1,3 @@
 import HeaderStore from './pages/Components/Header/store';
-export { HeaderStore };
+import HomeStore from './pages/view/Home/store';
+export { HeaderStore, HomeStore };
