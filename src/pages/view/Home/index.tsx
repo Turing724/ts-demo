@@ -5,6 +5,8 @@ import { LoginProps, LoginState } from './Home.interface';
 import { Carousel } from 'antd';
 import Store from './store';
 import './index.less';
+import swiper from 'Swiper';
+import 'swiper/css/swiper.min.css';
 @observer
 class Home extends React.PureComponent<LoginProps, LoginState> {
   constructor(props: LoginProps) {
@@ -17,7 +19,7 @@ class Home extends React.PureComponent<LoginProps, LoginState> {
     return (
       <div id="Home">
         <div className="bannerList">
-          <Carousel autoplay>
+          {/* <Carousel autoplay>
             {Store.bannerList &&
               toJS(Store.bannerList).map(x => {
                 return (
@@ -26,7 +28,15 @@ class Home extends React.PureComponent<LoginProps, LoginState> {
                   </div>
                 );
               })}
-          </Carousel>
+          </Carousel> */}
+          <div className="swiper-container">
+            <div className="swiper-wrapper">
+              <div className="swiper-slide">Slide 1</div>
+              <div className="swiper-slide">Slide 2</div>
+              <div className="swiper-slide">Slide 3</div>
+            </div>
+            <div className="swiper-pagination"></div>
+          </div>
         </div>
       </div>
     );
