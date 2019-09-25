@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import { toJS } from 'mobx';
+// import { toJS } from 'mobx';
 import { LoginProps, LoginState } from './Home.interface';
-import { Carousel } from 'antd';
+// import { Carousel } from 'antd';
 import Store from './store';
 import './index.less';
-import swiper from 'Swiper';
+import swiper from 'swiper';
 import 'swiper/css/swiper.min.css';
 @observer
 class Home extends React.PureComponent<LoginProps, LoginState> {
   constructor(props: LoginProps) {
     super(props);
     this.state = {
-      bannerList: []
+      swiperID: '1'
     };
   }
   render() {
@@ -29,13 +29,15 @@ class Home extends React.PureComponent<LoginProps, LoginState> {
                 );
               })}
           </Carousel> */}
-          <div className="swiper-container">
-            <div className="swiper-wrapper">
-              <div className="swiper-slide">Slide 1</div>
-              <div className="swiper-slide">Slide 2</div>
-              <div className="swiper-slide">Slide 3</div>
+          <div id={this.state.swiperID}>
+            <div className="swiper-container">
+              <div className="swiper-wrapper">
+                <div className="swiper-slide">Slide 1</div>
+                <div className="swiper-slide">Slide 2</div>
+                <div className="swiper-slide">Slide 3</div>
+              </div>
+              <div className="swiper-pagination"></div>
             </div>
-            <div className="swiper-pagination"></div>
           </div>
         </div>
       </div>
@@ -43,6 +45,13 @@ class Home extends React.PureComponent<LoginProps, LoginState> {
   }
   componentDidMount() {
     Store.getBannerList();
+    new swiper(`#${this.state.swiperID} .swiper-container`, {
+      autoplay: true,
+      loop: true,
+      pagination: {
+        el: `#${this.state.swiperID} ..swiper-pagination`
+      }
+    });
   }
 }
 export default Home;

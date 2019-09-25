@@ -1,3 +1,5 @@
 export interface LoginProps {}
 
-export interface LoginState {}
+export interface LoginState {
+  swiperID: string;
+}
