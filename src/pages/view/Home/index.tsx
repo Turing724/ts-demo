@@ -12,24 +12,14 @@ class Home extends React.PureComponent<LoginProps, LoginState> {
   constructor(props: LoginProps) {
     super(props);
     this.state = {
-      swiperID: '1'
+      mySwiper: null
     };
   }
   render() {
     return (
       <div id="Home">
         <div className="bannerList">
-          {/* <Carousel autoplay>
-            {Store.bannerList &&
-              toJS(Store.bannerList).map(x => {
-                return (
-                  <div key={x['id']}>
-                    <img src={x['url']} alt="" className="img-item" />
-                  </div>
-                );
-              })}
-          </Carousel> */}
-          <div id={this.state.swiperID}>
+          <div>
             <div className="swiper-container">
               <div className="swiper-wrapper">
                 <div className="swiper-slide">Slide 1</div>
@@ -45,11 +35,11 @@ class Home extends React.PureComponent<LoginProps, LoginState> {
   }
   componentDidMount() {
     Store.getBannerList();
-    new swiper(`#${this.state.swiperID} .swiper-container`, {
+    new swiper(`.swiper-container`, {
       autoplay: true,
       loop: true,
       pagination: {
-        el: `#${this.state.swiperID} ..swiper-pagination`
+        el: `.swiper-pagination`
       }
     });
   }
