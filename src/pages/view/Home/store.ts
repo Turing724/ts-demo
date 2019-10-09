@@ -11,4 +11,4 @@ class Store implements HomeMobxStore {
   }
 }
 
-export default new Store();
+export default new Store()

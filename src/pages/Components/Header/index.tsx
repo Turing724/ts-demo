@@ -55,11 +55,22 @@ class Header extends React.PureComponent<LoginProps, LoginState> {
       ]
     };
   }
+
+  componentDidMount() {
+    this.getData();
+  }
+
+  getData() {
+    axios.get('/v2/pweb/daily/topics?pos=0').then(res => {
+      console.log(res.data);
+    });
+  }
+  
   render() {
     const { navList } = this.state;
     return (
-      <div id={`Header`}>
-        <nav className={`navContainer clearfix`}>
+      <div id="Header">
+        <nav className="navContainer clearfix">
           <Link to="/">
             <svg className="fl" width="64px" height="32px" viewBox="0 0 64 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
               <desc>Created with Sketch.</desc>{' '}
@@ -98,7 +109,7 @@ class Header extends React.PureComponent<LoginProps, LoginState> {
               </g>
             </svg>
           </Link>
-          <ul className={`navList fl`}>
+          <ul className="navList fl">
             {navList.map((item, i) => {
               return (
                 <li key={item.id} className={`${Store.currentIndex === i ? 'active' : ''}`} onClick={() => Store.changeTab(i)}>
@@ -118,13 +129,6 @@ class Header extends React.PureComponent<LoginProps, LoginState> {
       </div>
     );
   }
-  componentDidMount() {
-    this.getData();
-  }
-  getData() {
-    axios.get('/v2/pweb/daily/topics?pos=0').then(res => {
-      console.log(res.data);
-    });
-  }
+ 
 }
 export default Header;

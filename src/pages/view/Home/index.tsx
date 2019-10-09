@@ -1,20 +1,39 @@
-import * as React from 'react';
-import { observer } from 'mobx-react';
+import * as React from 'react'
+import { observer } from 'mobx-react'
 // import { toJS } from 'mobx';
-import { LoginProps, LoginState } from './Home.interface';
+import { LoginProps, LoginState } from './Home.interface'
 // import { Carousel } from 'antd';
-import Store from './store';
-import './index.less';
-import swiper from 'swiper';
-import 'swiper/css/swiper.min.css';
+import Store from './store'
+import './index.less'
+import Swiper from 'swiper'
+import 'swiper/css/swiper.min.css'
 @observer
 class Home extends React.PureComponent<LoginProps, LoginState> {
   constructor(props: LoginProps) {
-    super(props);
+    super(props)
     this.state = {
       mySwiper: null
-    };
+    }
   }
+  componentDidMount() {
+    Store.getBannerList()
+    
+    this.setState({
+      mySwiper: new Swiper(`.swiper-container`, {
+        autoplay: true,
+        loop: true,
+        pagination: {
+          el: `.swiper-pagination`
+        }
+      })
+    })
+  }
+
+  handlePrev = () => {
+    this.state.mySwiper.slidePrev()
+    console.log(13)
+  }
+  
   render() {
     return (
       <div id="Home">
@@ -27,21 +46,15 @@ class Home extends React.PureComponent<LoginProps, LoginState> {
                 <div className="swiper-slide">Slide 3</div>
               </div>
               <div className="swiper-pagination"></div>
+              <div className="swiper-button-prev" onClick={this.handlePrev} />
+              <div className="swiper-button-next" />
             </div>
           </div>
         </div>
       </div>
-    );
+    )
   }
-  componentDidMount() {
-    Store.getBannerList();
-    new swiper(`.swiper-container`, {
-      autoplay: true,
-      loop: true,
-      pagination: {
-        el: `.swiper-pagination`
-      }
-    });
-  }
+ 
+  
 }
-export default Home;
+export default Home
