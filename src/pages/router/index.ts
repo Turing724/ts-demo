@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Home from '../view/Home';
 
 export interface RoutesItem {

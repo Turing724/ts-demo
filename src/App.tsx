@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as React from 'react';
 import { Provider } from 'mobx-react';
 import { BrowserRouter, Route } from 'react-router-dom';

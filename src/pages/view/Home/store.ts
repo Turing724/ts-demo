@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { observable, action } from 'mobx';
 import { HomeMobxStore } from './HomeMobx.interface';
 import axios from 'axios';

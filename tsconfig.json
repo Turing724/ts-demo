@@ -7,7 +7,7 @@
     "target": "ES2015",
     "jsx": "react",
     "experimentalDecorators": true,
-    "keyofStringsOnly": true
+    "keyofStringsOnly": true,
   },
   "include": ["./src/**/*", "./typing/**/*.ts"]
 }
